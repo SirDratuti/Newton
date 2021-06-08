@@ -4,8 +4,9 @@ import com.approx.newton.functions.Function;
 import com.approx.newton.linear.BinarySearch;
 import com.approx.newton.objects.Matrix;
 import com.approx.newton.objects.Vector;
-import com.approx.newton.utils.Maths;
 import com.approx.newton.utils.MethodStats;
+
+import static com.approx.newton.utils.Maths.*;
 
 public class NewtonLinearSearch implements Method {
 
@@ -19,11 +20,11 @@ public class NewtonLinearSearch implements Method {
             cnt++;
             final Vector grad = function.grad(x);
             final Matrix hessian = function.hessian(x);
-            final Vector d = hessian.gauss(Maths.multiply(grad, -1.0));
+            final Vector d = hessian.gauss(multiply(grad, -1.0));
             double r = new BinarySearch(function, -100, 100, eps).start();
-            final Vector s = Maths.multiply(d, r);
-            x = Maths.sum(x, s);
-            if (Maths.norm(s) <= eps) {
+            final Vector s = multiply(d, r);
+            x = sum(x, s);
+            if (norm(s) <= eps) {
                 return new MethodStats(x, cnt);
             }
         }

@@ -4,8 +4,9 @@ import com.approx.newton.functions.Function;
 import com.approx.newton.linear.BinarySearch;
 import com.approx.newton.objects.Matrix;
 import com.approx.newton.objects.Vector;
-import com.approx.newton.utils.Maths;
 import com.approx.newton.utils.MethodStats;
+
+import static com.approx.newton.utils.Maths.*;
 
 public class NewtonDescent implements Method {
 
@@ -15,24 +16,24 @@ public class NewtonDescent implements Method {
                              final double eps) {
         int cnt = 0;
         Vector x = new Vector(values.values());
-        Vector d = Maths.multiply(function.grad(x), -1);
+        Vector d = multiply(function.grad(x), -1);
         double r = new BinarySearch(function, -100, 100, eps).start();
-        Vector s = Maths.multiply(d, r);
-        x = Maths.sum(x, s);
+        Vector s = multiply(d, r);
+        x = sum(x, s);
         while (true) {
             cnt++;
             final Vector grad = function.grad(x);
             final Matrix hessian = function.hessian(x);
-            s = hessian.gauss(Maths.multiply(grad, -1));
-            if (Maths.scalarMultiply(s, grad) < 0) {
+            s = hessian.gauss(multiply(grad, -1));
+            if (scalarMultiply(s, grad) < 0) {
                 d = s;
             } else {
-                d = Maths.multiply(grad, -1);
+                d = multiply(grad, -1);
             }
             r = new BinarySearch(function, -100, 100, eps).start();
-            s = Maths.multiply(d, r);
-            x = Maths.sum(x, s);
-            if (Maths.norm(s) < eps) {
+            s = multiply(d, r);
+            x = sum(x, s);
+            if (norm(s) < eps) {
                 return new MethodStats(x, cnt);
             }
         }

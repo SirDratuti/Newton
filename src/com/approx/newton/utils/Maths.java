@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 public final class Maths {
 
-
     public static Vector sum(final Vector vector, final Vector other) {
         final List<Double> values = new ArrayList<>();
         for (int i = 0; i < vector.size(); i++) {
@@ -126,7 +125,7 @@ public final class Maths {
         );
         for (int i = 0; i < vector.size(); i++) {
             for (int j = 0; j < vector.size(); j++) {
-                list.get(i).set(j, vector.get(i) * vector.get(j));
+                list.get(i).set(j, vector.get(i) * other.get(j));
             }
         }
 
