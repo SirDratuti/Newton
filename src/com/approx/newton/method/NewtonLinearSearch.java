@@ -21,7 +21,7 @@ public class NewtonLinearSearch implements Method {
             final Vector grad = function.grad(x);
             final Matrix hessian = function.hessian(x);
             final Vector d = hessian.gauss(multiply(grad, -1.0));
-            double r = new BinarySearch(function, -100, 100, eps).start();
+            double r = new BinarySearch(function, -100, 100, eps, x, d).start();
             final Vector s = multiply(d, r);
             x = sum(x, s);
             if (norm(s) <= eps) {

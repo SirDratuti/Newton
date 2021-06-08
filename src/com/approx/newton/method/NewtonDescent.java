@@ -17,7 +17,7 @@ public class NewtonDescent implements Method {
         int cnt = 0;
         Vector x = new Vector(values.values());
         Vector d = multiply(function.grad(x), -1);
-        double r = new BinarySearch(function, -100, 100, eps).start();
+        double r = new BinarySearch(function, -100, 100, eps, x, d).start();
         Vector s = multiply(d, r);
         x = sum(x, s);
         while (true) {
@@ -30,7 +30,7 @@ public class NewtonDescent implements Method {
             } else {
                 d = multiply(grad, -1);
             }
-            r = new BinarySearch(function, -100, 100, eps).start();
+            r = new BinarySearch(function, -100, 100, eps, x, d).start();
             s = multiply(d, r);
             x = sum(x, s);
             if (norm(s) < eps) {
