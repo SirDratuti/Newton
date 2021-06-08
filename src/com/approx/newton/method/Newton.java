@@ -17,12 +17,13 @@ public class Newton implements Method {
         int cnt = 0;
         while (true) {
             cnt++;
-            final Vector grad = function.grad(values);
-            final Matrix hessian = function.hessian(values);
+            final Vector grad = function.grad(x);
+            final Matrix hessian = function.hessian(x);
             final Vector s = hessian.gauss(
                     multiply(grad, -1.0));
             x = sum(x, s);
-            if (norm(x) <= eps) {
+            System.out.println(x.get(0) + " " + x.get(1));
+            if (norm(s) <= eps ) {
                 return new MethodStats(x, cnt);
             }
         }

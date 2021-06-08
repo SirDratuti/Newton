@@ -41,15 +41,11 @@ public final class Maths {
     }
 
     public static Vector multiply(final Vector vector, final double constant) {
-        return new Vector(
-                vector
-                        .values()
-                        .stream()
-                        .map(it ->
-                                it * constant)
-                        .collect(Collectors
-                                .toList())
-        );
+        final List<Double> list = new ArrayList<>();
+        for (int i = 0; i < vector.size(); i++) {
+            list.add(vector.get(i) * constant);
+        }
+        return new Vector(list);
     }
 
     public static double norm(final Vector vector) {
@@ -65,7 +61,7 @@ public final class Maths {
     }
 
     public static Matrix diagonal(final int size, final double value) {
-        final List<List<Double>> list = Collections.nCopies(size, Collections.nCopies(size, 0.0));
+        final List<List<Double>> list = emptyList(size);
         for (int i = 0; i < size; i++) {
             list.get(i).set(i, value);
         }
@@ -119,10 +115,7 @@ public final class Maths {
     }
 
     public static Matrix mulVectors(final Vector vector, final Vector other) {
-        final List<List<Double>> list = Collections.nCopies(
-                vector.size(),
-                Collections.nCopies(vector.size(), 0.0)
-        );
+        final List<List<Double>> list = emptyList(vector.size());
         for (int i = 0; i < vector.size(); i++) {
             for (int j = 0; j < vector.size(); j++) {
                 list.get(i).set(j, vector.get(i) * other.get(j));
@@ -134,15 +127,26 @@ public final class Maths {
     }
 
     public static Vector mulMatrixOnVector(final Matrix matrix,
-                                                   final Vector vector) {
+                                           final Vector vector) {
         final List<Double> list = new ArrayList<>();
         for (int i = 0; i < matrix.size(); i++) {
             list.add(0.0);
             for (int j = 0; j < matrix.getRow(i).size(); j++) {
-                list.set(i,list.get(i) + vector.get(j) * matrix.get(i,j));
+                list.set(i, list.get(i) + vector.get(j) * matrix.get(i, j));
             }
         }
         return new Vector(list);
+    }
+
+    private static List<List<Double>> emptyList(final int size) {
+        final List<List<Double>> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            list.add(new ArrayList<>());
+            for (int j = 0; j < size; j++) {
+                list.get(i).add(0.0);
+            }
+        }
+        return list;
     }
 
 }

@@ -15,7 +15,7 @@ public class BinarySearch {
     private final Vector x;
     private final Vector d;
 
-    public BinarySearch(final Function function, double left, double right, double epsilon, Vector x, Vector d) {
+    public BinarySearch(final Function function, double left, double right, double epsilon, final Vector x, final Vector d) {
         this.left = left;
         this.right = right;
         beta = epsilon;
@@ -27,11 +27,12 @@ public class BinarySearch {
 
     //TODO Егор, прикрути к бинпоиску правильную реализацию
     public Double start() {
-        while ((right - left) >= epsilon) {
-            double x1 = (left + right - beta) / 2.0;
-            double x2 = (left + right + beta) / 2.0;
-            double fx1 = function.apply(Maths.sum(x, Maths.multiply(d,x1)));
-            double fx2 = function.apply(Maths.sum(x, Maths.multiply(d,x2)));
+        while ((right - left) / 2.0 - epsilon >= 0.0) {
+            double epsN = (right - left) / 2.0;
+            double x1 = (left + right - epsN) / 2.0;
+            double x2 = (left + right + epsN) / 2.0;
+            double fx1 = function.apply(Maths.sum(x, Maths.multiply(d, x1)));
+            double fx2 = function.apply(Maths.sum(x, Maths.multiply(d, x2)));
             if (fx2 > fx1) {
                 right = x2;
             } else {

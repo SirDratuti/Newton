@@ -18,13 +18,16 @@ public class NewtonLinearSearch implements Method {
         int cnt = 0;
         while (true) {
             cnt++;
+            System.out.println(cnt);
             final Vector grad = function.grad(x);
             final Matrix hessian = function.hessian(x);
             final Vector d = hessian.gauss(multiply(grad, -1.0));
-            double r = new BinarySearch(function, -100, 100, eps, x, d).start();
+            System.out.println("gaussed");
+            double r = new BinarySearch(function, -20, 20, eps, x, d).start();
+            System.out.println("binsearced");
             final Vector s = multiply(d, r);
             x = sum(x, s);
-            if (norm(s) <= eps) {
+            if (norm(s) <= eps || cnt >= 10) {
                 return new MethodStats(x, cnt);
             }
         }
