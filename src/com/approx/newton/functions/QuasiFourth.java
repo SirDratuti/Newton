@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuasiFourth implements Function {
+
     @Override
     public double apply(final Vector values) {
         final double x = values.get(0);

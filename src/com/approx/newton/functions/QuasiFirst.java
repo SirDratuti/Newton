@@ -19,9 +19,9 @@ public class QuasiFirst implements Function {
     public Matrix hessian(final Vector values) {
         final List<List<Double>> m = new ArrayList<>();
         final double x = values.get(0);
+        m.add(new ArrayList<>());
+        m.add(new ArrayList<>());
         final double y = values.get(1);
-        m.add(new ArrayList<>());
-        m.add(new ArrayList<>());
         m.get(0).add(-400.0 * y + 1200.0 * x * x + 2);
         m.get(0).add(-400.0 * x);
         m.get(1).add(-400.0 * x);

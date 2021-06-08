@@ -33,6 +33,7 @@ public class NewtonDescent implements Method {
             r = new BinarySearch(function, -100, 100, eps, x, d).start();
             s = multiply(d, r);
             x = sum(x, s);
+            print(x);
             if (norm(s) < eps) {
                 return new MethodStats(x, cnt);
             }

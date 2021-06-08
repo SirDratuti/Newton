@@ -62,6 +62,7 @@ public class AbstractQuasiMethod implements QuasiMethod {
             x2 = sum(x1, multiply(p, r));
             delta = sub(x2, x1);
             x1 = new Vector(x2.values());
+            print(x2);
             if (norm(delta) < eps) {
                 return new MethodStats(x2, cnt);
             }

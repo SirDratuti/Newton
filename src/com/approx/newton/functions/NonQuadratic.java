@@ -18,10 +18,10 @@ public class NonQuadratic implements Function {
 
     @Override
     public Matrix hessian(final Vector values) {
+        final double x = values.get(0);
         final List<List<Double>> m = new ArrayList<>();
         m.add(new ArrayList<>());
         m.add(new ArrayList<>());
-        final double x = values.get(0);
         final double y = values.get(1);
         m.get(0).add(12.0 * x * x + 4.0 * y - 66.0);
         m.get(0).add(4 * x + 4.0 * y);

@@ -11,5 +11,4 @@ public interface Function {
     Matrix hessian(final Vector values);
 
     Vector grad(final Vector values);
-
 }

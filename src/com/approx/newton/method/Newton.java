@@ -22,7 +22,7 @@ public class Newton implements Method {
             final Vector s = hessian.gauss(
                     multiply(grad, -1.0));
             x = sum(x, s);
-            System.out.println(x.get(0) + " " + x.get(1));
+            print(x);
             if (norm(s) <= eps ) {
                 return new MethodStats(x, cnt);
             }
