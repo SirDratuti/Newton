@@ -57,7 +57,7 @@ public class AbstractQuasiMethod implements QuasiMethod {
             }
 
             p = mulMatrixOnVector(G, w2);
-            r = new BinarySearch(function, -100, 100, eps, x1, p);
+            r = new BinarySearch(function, -100, 100, eps, x1, p).start();
             x2 = sum(x1, multiply(p, r));
             delta = sub(x2, x1);
             x1 = new Vector(x2.values());
