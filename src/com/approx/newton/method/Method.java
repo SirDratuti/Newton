@@ -7,5 +7,5 @@ import com.approx.newton.utils.MethodStats;
 
 public interface Method {
 
-    MethodStats solve (final Vector<Double> values, final Function function, final double eps);
+    MethodStats solve (final Vector values, final Function function, final double eps);
 }

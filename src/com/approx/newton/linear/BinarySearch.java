@@ -17,7 +17,7 @@ public class BinarySearch {
         this.function = function;
     }
 
-    //TODO Егор, прикрути к бинпоиску правильную реаллизацию
+    //TODO Егор, прикрути к бинпоиску правильную реализацию
     public Double start() {
         double middle = (left + right) / 2;
         while ((right - left) >= epsilon) {

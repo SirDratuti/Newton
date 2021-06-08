@@ -28,7 +28,7 @@ public record Matrix(List<List<Double>> values) {
         }
     }
 
-    public @NotNull Vector<Double> gauss(final Vector<Double> b) {
+    public @NotNull Vector gauss(final Vector b) {
         final Map<Integer, Integer> mp = new HashMap<>();
         final List<Double> ans = new ArrayList<>();
         fillMap(mp);
@@ -58,10 +58,10 @@ public record Matrix(List<List<Double>> values) {
         }
 
         Collections.reverse(ans);
-        return new Vector<>(ans);
+        return new Vector(ans);
     }
 
-    private void sub(final int first, final int second, final int diag, final Vector<Double> b) {
+    private void sub(final int first, final int second, final int diag, final Vector b) {
         if (Math.abs(get(second, diag)) <= 1e-20) {
             return;
         }

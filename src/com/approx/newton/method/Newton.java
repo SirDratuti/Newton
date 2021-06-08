@@ -9,16 +9,16 @@ import com.approx.newton.utils.MethodStats;
 public class Newton implements Method {
 
     @Override
-    public MethodStats solve(final Vector<Double> values,
+    public MethodStats solve(final Vector values,
                              final Function function,
                              final double eps) {
-        Vector<Double> x = new Vector<>(values.values());
+        Vector x = new Vector(values.values());
         int cnt = 0;
         while (true) {
             cnt++;
-            final Vector<Double> grad = function.grad(values);
+            final Vector grad = function.grad(values);
             final Matrix hessian = function.hessian(values);
-            final Vector<Double> s = hessian.gauss(
+            final Vector s = hessian.gauss(
                     Maths.multiply(grad, -1.0));
             x = Maths.sum(x, s);
             if (Maths.norm(x) <= eps) {
