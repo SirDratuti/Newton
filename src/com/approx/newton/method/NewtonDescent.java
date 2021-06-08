@@ -16,6 +16,7 @@ public class NewtonDescent implements Method {
                              final double eps) {
         int cnt = 0;
         Vector x = new Vector(values.values());
+        print(x);
         Vector d = multiply(function.grad(x), -1);
         double r = new BinarySearch(function, -100, 100, eps, x, d).start();
         Vector s = multiply(d, r);

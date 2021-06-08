@@ -16,9 +16,9 @@ public class NewtonLinearSearch implements Method {
                              final double eps) {
         Vector x = new Vector(values.values());
         int cnt = 0;
+        print(x);
         while (true) {
             cnt++;
-            System.out.println(cnt);
             final Vector grad = function.grad(x);
             final Matrix hessian = function.hessian(x);
             final Vector d = hessian.gauss(multiply(grad, -1.0));
@@ -26,7 +26,7 @@ public class NewtonLinearSearch implements Method {
             final Vector s = multiply(d, r);
             x = sum(x, s);
             print(x);
-            if (norm(s) <= eps || cnt >= 10) {
+            if (norm(s) <= eps) {
                 return new MethodStats(x, cnt);
             }
         }

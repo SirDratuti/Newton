@@ -14,6 +14,7 @@ public class Newton implements Method {
                              final Function function,
                              final double eps) {
         Vector x = new Vector(values.values());
+        print(x);
         int cnt = 0;
         while (true) {
             cnt++;
