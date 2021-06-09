@@ -11,14 +11,24 @@ import java.util.List;
 public class Tester {
 
     public static void main(String[] args) {
-        final Function func = new QuasiFirst();
-        final Method newtonMethod = new Newton();
-        final List<Double> start = new ArrayList<>();
-        start.add(4.0);
-        start.add(1.0);
-        final MethodStats result =
-                newtonMethod.solve(new Vector(start),
-                        func, 1e-10);
-        System.out.println(result.iterations());
+        List<Double> start = new ArrayList<>();
+        start.add(0.0);
+        start.add(0.0);
+        List<Function> list = new ArrayList<>();
+        //list.add(new QuasiFirst());
+        //list.add(new QuasiSecond());
+        //list.add(new QuasiThird());
+        list.add(new QuasiFourth());
+        System.out.println("NewtonDescent y");
+        for (Function func : list) {
+            System.out.println(func.getClass());
+            Method newtonMethod = new NewtonDescent();
+            final MethodStats result =
+                    newtonMethod.solve(new Vector(start),
+                            func, 1e-7);
+            System.out.println();
+            System.out.println("iterations: " + result.iterations());
+            System.out.println();
+        }
     }
 }

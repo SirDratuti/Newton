@@ -13,10 +13,11 @@ public class QuasiFourth implements Function {
         final double x = values.get(0);
         final double y = values.get(1);
         final double v = ((x - 1.0) / 2.0) * ((x - 1.0) / 2.0);
+        final double v1 = ((x - 2.0) / 2.0) * ((x - 2.0) / 2.0);
         final double w = ((y - 1.0) / 3.0) * ((y - 1.0) / 3.0);
         return (100.0
                 - (2.0 / (1.0 + v + w))
-                - (1.0 / (1.0 + v + w))
+                - (1.0 / (1.0 + v1 + w))
         );
     }
 
