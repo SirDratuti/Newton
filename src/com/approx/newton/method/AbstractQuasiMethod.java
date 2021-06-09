@@ -19,6 +19,11 @@ public class AbstractQuasiMethod implements QuasiMethod {
                              final double eps,
                              final int methodType) {
         int cnt = 0;
+        System.out.print("   ");
+        for (int i = 0; i < values.size(); i++) {
+            System.out.print("x" + (i+1) + "\t\t\t");
+        }
+        System.out.println();
         Vector x1 = new Vector(values.values());
         Matrix G = matrixI(x1.size());
         Vector w1 = multiply(function.grad(x1), -1);
