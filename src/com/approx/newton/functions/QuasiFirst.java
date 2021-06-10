@@ -2,6 +2,7 @@ package com.approx.newton.functions;
 
 import com.approx.newton.objects.Matrix;
 import com.approx.newton.objects.Vector;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +10,14 @@ import java.util.List;
 public class QuasiFirst implements Function {
     //100(y-x^2)^2 + (1-x)^2
     @Override
-    public double apply(final Vector values) {
+    public double apply(final @NotNull Vector values) {
         final double x = values.get(0);
         final double y = values.get(1);
         return (100.0 * (y - x * x) * (y - x * x) + (1 - x) * (1 - x));
     }
 
     @Override
-    public Matrix hessian(final Vector values) {
+    public @NotNull Matrix hessian(final @NotNull Vector values) {
         final List<List<Double>> m = new ArrayList<>();
         final double x = values.get(0);
         m.add(new ArrayList<>());
@@ -30,7 +31,7 @@ public class QuasiFirst implements Function {
     }
 
     @Override
-    public Vector grad(final Vector values) {
+    public @NotNull Vector grad(final @NotNull Vector values) {
         final double x = values.get(0);
         final double y = values.get(1);
         final List<Double> list = new ArrayList<>();

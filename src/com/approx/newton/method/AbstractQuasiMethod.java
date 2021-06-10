@@ -5,19 +5,20 @@ import com.approx.newton.linear.BinarySearch;
 import com.approx.newton.objects.Matrix;
 import com.approx.newton.objects.Vector;
 import com.approx.newton.utils.MethodStats;
+import org.jetbrains.annotations.NotNull;
 
 import static com.approx.newton.utils.Maths.*;
 
 public class AbstractQuasiMethod implements QuasiMethod {
 
-    public static int DFPMethod = 1;
-    public static int PowellMethod = 2;
+    public static final int DFPMethod = 1;
+    public static final int PowellMethod = 2;
 
     @Override
-    public MethodStats solve(final Vector values,
-                             final Function function,
-                             final double eps,
-                             final int methodType) {
+    public @NotNull MethodStats solve(final @NotNull Vector values,
+                                      final @NotNull Function function,
+                                      final double eps,
+                                      final int methodType) {
         int cnt = 0;
         System.out.print("   ");
         for (int i = 0; i < values.size(); i++) {

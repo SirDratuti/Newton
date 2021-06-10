@@ -2,6 +2,7 @@ package com.approx.newton.functions;
 
 import com.approx.newton.objects.Matrix;
 import com.approx.newton.objects.Vector;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public class NonQuadratic implements Function {
     //x^4+2x^2y-33x^2+2xy^2-20x+y^4-19y^2-34y+389
     @Override
-    public double apply(final Vector values) {
+    public double apply(final @NotNull Vector values) {
         final double x = values.get(0);
         final double y = values.get(1);
         return (x * x * x * x + 2.0 * x * x * y - 33.0 * x * x + 2.0 * x * y * y - 20.0 * x +
@@ -17,7 +18,7 @@ public class NonQuadratic implements Function {
     }
 
     @Override
-    public Matrix hessian(final Vector values) {
+    public @NotNull Matrix hessian(final @NotNull Vector values) {
         final double x = values.get(0);
         final List<List<Double>> m = new ArrayList<>();
         m.add(new ArrayList<>());
@@ -31,7 +32,7 @@ public class NonQuadratic implements Function {
     }
 
     @Override
-    public Vector grad(final Vector values) {
+    public @NotNull Vector grad(final @NotNull Vector values) {
         final double x = values.get(0);
         final double y = values.get(1);
         final List<Double> list = new ArrayList<>();

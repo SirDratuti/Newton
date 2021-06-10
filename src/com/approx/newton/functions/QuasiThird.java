@@ -2,6 +2,7 @@ package com.approx.newton.functions;
 
 import com.approx.newton.objects.Matrix;
 import com.approx.newton.objects.Vector;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public class QuasiThird implements Function {
     //(x_1 + 10x_2)^2 + 5(x_3 - x_4)^2 + (x_2 - 2x_3)^4 + 10(x_1 - x_4)^4
     @Override
-    public double apply(Vector values) {
+    public double apply(@NotNull Vector values) {
         final double x_1 = values.get(0);
         final double x_2 = values.get(1);
         final double x_3 = values.get(2);
@@ -21,7 +22,7 @@ public class QuasiThird implements Function {
     }
 
     @Override
-    public Matrix hessian(Vector values) {
+    public @NotNull Matrix hessian(@NotNull Vector values) {
         final List<List<Double>> m = new ArrayList<>();
         final double x_1 = values.get(0);
         final double x_2 = values.get(1);
@@ -51,7 +52,7 @@ public class QuasiThird implements Function {
     }
 
     @Override
-    public Vector grad(Vector values) {
+    public @NotNull Vector grad(@NotNull Vector values) {
         final double x_1 = values.get(0);
         final double x_2 = values.get(1);
         final double x_3 = values.get(2);

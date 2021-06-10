@@ -2,6 +2,7 @@ package com.approx.newton.functions;
 
 import com.approx.newton.objects.Matrix;
 import com.approx.newton.objects.Vector;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +10,14 @@ import java.util.List;
 public class TestFunction implements Function {
     //x^2+y^2-1.2xy
     @Override
-    public double apply(final Vector values) {
+    public double apply(final @NotNull Vector values) {
         double x = values.get(0);
         double y = values.get(1);
         return (x * x + y * y - 1.2 * x * y);
     }
 
     @Override
-    public Matrix hessian(final Vector values) {
+    public @NotNull Matrix hessian(final Vector values) {
         final List<List<Double>> m = new ArrayList<>();
         m.add(new ArrayList<>());
         m.add(new ArrayList<>());
@@ -28,7 +29,7 @@ public class TestFunction implements Function {
     }
 
     @Override
-    public Vector grad(final Vector values) {
+    public @NotNull Vector grad(final @NotNull Vector values) {
         double x = values.get(0);
         double y = values.get(1);
         final List<Double> first = new ArrayList<>();

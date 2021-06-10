@@ -2,6 +2,7 @@ package com.approx.newton.functions;
 
 import com.approx.newton.objects.Matrix;
 import com.approx.newton.objects.Vector;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public class QuasiFourth implements Function {
 
     @Override
-    public double apply(final Vector values) {
+    public double apply(final @NotNull Vector values) {
         final double x = values.get(0);
         final double y = values.get(1);
         final double v = ((x - 1.0) / 2.0) * ((x - 1.0) / 2.0);
@@ -22,7 +23,7 @@ public class QuasiFourth implements Function {
     }
 
     @Override
-    public Matrix hessian(final Vector values) {
+    public @NotNull Matrix hessian(final @NotNull Vector values) {
         final List<List<Double>> m = new ArrayList<>();
         m.add(new ArrayList<>());
         m.add(new ArrayList<>());
@@ -46,7 +47,7 @@ public class QuasiFourth implements Function {
     }
 
     @Override
-    public Vector grad(final Vector values) {
+    public @NotNull Vector grad(final @NotNull Vector values) {
         final double x = values.get(0);
         final double y = values.get(1);
         final double v = (0.25 * (x - 2.0) * (x - 2.0) + (y - 1.0) * (y - 1.0) / 9.0 + 1.0);

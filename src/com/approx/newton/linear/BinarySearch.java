@@ -4,6 +4,7 @@ package com.approx.newton.linear;
 import com.approx.newton.functions.Function;
 import com.approx.newton.objects.Vector;
 import com.approx.newton.utils.Maths;
+import org.jetbrains.annotations.NotNull;
 
 public class BinarySearch {
 
@@ -25,7 +26,7 @@ public class BinarySearch {
         this.d = d;
     }
 
-    public Double start() {
+    public @NotNull Double start() {
         while ((right - left) / 2.0 - epsilon >= 0.0) {
             double epsN = (right - left) / 2.0;
             double x1 = (left + right - epsN) / 2.0;

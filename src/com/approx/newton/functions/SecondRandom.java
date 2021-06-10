@@ -2,6 +2,7 @@ package com.approx.newton.functions;
 
 import com.approx.newton.objects.Matrix;
 import com.approx.newton.objects.Vector;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +10,14 @@ import java.util.List;
 public class SecondRandom implements Function{
     //(1.5x^4 + 28sqrt(y)*x^3 +(15x^(3/2))^4 + 2x + y)^2 + y + 33x
     @Override
-    public double apply(Vector values) {
+    public double apply(@NotNull Vector values) {
         final double x = values.get(0);
         final double y = values.get(1);
         return Math.pow(1.5*x*x*x*x + 28*Math.sqrt(y)*x*x*x + Math.pow(15*Math.pow(x, (3.0/2)), 4.0) + 2*x + y, 2.0) + y + 33 * x;
     }
 
     @Override
-    public Matrix hessian(Vector values) {
+    public @NotNull Matrix hessian(@NotNull Vector values) {
         final List<List<Double>> m = new ArrayList<>();
         final double x = values.get(0);
         m.add(new ArrayList<>());
@@ -30,7 +31,7 @@ public class SecondRandom implements Function{
     }
 
     @Override
-    public Vector grad(Vector values) {
+    public @NotNull Vector grad(@NotNull Vector values) {
         final double x = values.get(0);
         final double y = values.get(1);
         final List<Double> list = new ArrayList<>();
