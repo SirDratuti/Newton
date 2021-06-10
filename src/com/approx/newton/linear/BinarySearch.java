@@ -25,7 +25,6 @@ public class BinarySearch {
         this.d = d;
     }
 
-    //TODO Егор, прикрути к бинпоиску правильную реализацию
     public Double start() {
         while ((right - left) / 2.0 - epsilon >= 0.0) {
             double epsN = (right - left) / 2.0;
